@@ -1,3 +1,9 @@
 [user]
 	name = Felix Auringer
 	email = 48409110+felixauringer@users.noreply.github.com
+[core]
+	editor = vim
+[merge]
+	tool = meld
+[pull]
+	ff = only
