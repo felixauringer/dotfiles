@@ -115,7 +115,7 @@ export EDITOR='vim'
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-alias ls='ls -h'
+alias ls='ls -h --color=auto'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
