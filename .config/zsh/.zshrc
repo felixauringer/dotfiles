@@ -120,7 +120,11 @@ alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-
+alias pacman-sync='cat \
+  $HOME/.installation/pacman/base \
+  $HOME/.installation/pacman/ui \
+  $HOME/.installation/pacman/applications \
+  | sudo pacman -S --needed -'
 
 if [ $(tput lines) -gt 25 ]
 then
