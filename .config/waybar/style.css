@@ -2,14 +2,15 @@
     border: none;
     border-radius: 0;
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: MesloLGS NF, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16;
     min-height: 0;
 }
 
 window#waybar {
     background-color: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
+    border-bottom: none;
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
@@ -79,7 +80,6 @@ window#waybar.chromium {
 #idle_inhibitor,
 #mpd {
     padding: 0 10px;
-    margin: 0 4px;
     color: #ffffff;
 }
 
