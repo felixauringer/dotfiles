@@ -119,7 +119,7 @@ alias ls='ls -h --color=auto'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 
 if [ $(tput lines) -gt 25 ]
