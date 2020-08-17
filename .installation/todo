@@ -1,0 +1,4 @@
+chmod 600 /boot/initramfs* after generating new initramfs
+waybar
+keybindings
+spotifyd

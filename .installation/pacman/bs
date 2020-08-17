@@ -1,0 +1,7 @@
+qemu
+qemu-arch-extra
+gdb
+arm-none-eabi-newlib
+arm-none-eabi-gcc
+arm-none-eabi-binutils
+arm-none-eabi-gdb

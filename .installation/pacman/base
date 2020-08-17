@@ -1,0 +1,16 @@
+base
+linux
+linux-firmware
+dhcpcd
+vim
+base-devel
+man-db
+man-pages
+texinfo
+lvm2
+efibootmgr
+grub
+zsh
+git
+openssh
+wget

@@ -1,0 +1,126 @@
+# Configure iso
+ls /sys/firmware/efi/efivars
+// plug lan cable in
+ping archlinux.org
+timedatectl set-ntp true
+// check /etc/pacman.d/mirrorlist
+
+# setup disks
+## efi
+// plug usb drive in
+// create 1G esp on usb drive
+  fdisk /dev/<usb>
+  // delete all partitions: d
+  // use gpt: g
+  n <enter> <enter> +1G t 1
+mkfs.fat -F32 /dev/<usb>1
+// if esp existed: copy contents from old esp to usb drive, delete old esp
+// /dev/<usb>1 is now referred to as /dev/<esp>
+
+## luks1 container
+// create luks container
+  gdisk /dev/<luks partition>
+  n <enter> <enter> +<size>G 8309
+cryptsetup luksFormat --type luks1 /dev/<luks partition>
+cryptsetup open /dev/<luks partition> cryptlvm
+pvcreate /dev/mapper/cryptlvm
+vgcreate arch /dev/mapper/cryptlvm
+// optional more logical volumes: lvcreate -L <size>G arch -n <label>
+lvcreate -l 100%FREE arch -n root
+// repeat command for other logical volumes
+  mkfs.ext4 /dev/arch/root
+
+# installation
+mount /dev/arch/root /mnt
+mkdir /mnt/efi
+mount /dev/<esp> /mnt/efi
+
+pacstrap /mnt base linux linux-firmware dhcpcd vim base-devel man-db man-pages texinfo lvm2 grub efibootmgr
+umount /mnt/efi
+genfstab -U /mnt >> /mnt/etc/fstab
+mount /dev/<esp> /mnt/efi
+arch-chroot /mnt
+
+## localization
+ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+hwclock --systohc
+// uncomment en_US.UTF-8
+  vim /etc/locale.gen
+locale-gen
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+
+## networking
+echo "<hostname>" > /etc/hostname
+vim /etc/hosts
+  127.0.0.1	localhost
+  ::1		localhost
+  127.0.1.1	<hostname>.localdomain <hostname>
+systemctl enable dhcpcd
+
+## initramfs
+// add "encrypt" and "lvm2" HOOKS after "block" and "keyboard" and before "fsck"
+  vim /etc/mkinitcpio.conf
+mkinitcpio -P
+
+## bootloader
+// uuid of partition of cryplvm: blkid
+vim /etc/default/grub
+  GRUB_ENABLE_CRYPTODISK=y
+  GRUB_CMDLINE_LINUX="... cryptdevice=UUID=<UUID>:cryptlvm root=/dev/arch/root ..."
+grub-install --removable --target=x86_64-efi --efi-directory=/efi --bootloader-id=grub --boot-directory=/efi --recheck
+grub-mkconfig -o /efi/grub/grub.cfg
+// configure uefi: efibootmgr
+  // use \\ as separators in paths
+  // create: efibootmgr --create --disk <esp> --part <esp> --loader <path to .efi> --label <label>
+  // delete: efibootmgr -b <hex> -B
+  // order: efibootmgr -o <hex1>,<hex2>, ...
+  // verbose: efibootmgr -v
+passwd
+exit
+umount -R /mnt
+reboot
+
+## swap / hibernation
+dd if=/dev/zero of=/swapfile bs=1M count=24576 status=progress
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+// append /etc/fstab
+  /swapfile none swap sw 0 0
+// add "resume" HOOK after "lvm2"
+  vim /etc/mkinitcpio.conf
+mkinitcpio -P
+// resume offset: first entry of physical offset in row ext 0
+  filefrag -v /swapfile
+vim /etc/default/grub
+  GRUB_CMDLINE_LINUX="... resume=/dev/arch/root resume_offset=<offset> ..."
+grub-mkconfig -o /efi/grub/grub.cfg
+
+## avoid having to enter password twice
+dd bs=512 count=4 if=/dev/random of=/root/cryptlvm.keyfile iflag=fullblock
+chmod 000 /root/cryptlvm.keyfile
+cryptsetup -v luksAddKey /dev/<luks partition> /root/cryptlvm.keyfile
+vim /etc/mkinitcpio.conf
+  FILES=(/root/cryptlvm.keyfile)
+mkinitcpio -P
+vim /etc/default/grub
+  GRUB_CMDLINE_LINUX="... cryptkey=rootfs:/root/cryptlvm.keyfile ..."
+grub-mkconfig -o /efi/grub/grub.cfg
+
+## user management
+pacman -S zsh git openssh wget
+useradd -m -G wheel -s /bin/zsh <username>
+passwd <username>
+// uncomment %wheel ALL=(ALL) ALL
+  EDITOR=vim visudo
+
+## aur
+mkdir .cloned
+cd .cloned
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+## config
+all config files in the home directory are in my github dotfiles repository
+a list of all config files in etc that I edited is in the directory ./etc

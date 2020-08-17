@@ -1,0 +1,10 @@
+xorg-server
+xorg-xinit
+i3-wm
+i3-status
+xorg-xrandr
+dmenu
+arandr
+nvidia
+nvidia-utils
+nvidia-settings

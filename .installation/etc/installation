@@ -1,0 +1,6 @@
+/etc/hostname
+/etc/hosts
+/etc/localtime
+/etc/locale.gen
+/etc/locale.conf
+/etc/pacman.d/mirrorlist
