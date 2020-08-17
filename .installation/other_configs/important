@@ -4,3 +4,4 @@
 /etc/mkinitcpio.conf
 /etc/xorg.conf.d
 /etc/wireguard
+$HOME/.ssh/config

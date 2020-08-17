@@ -122,5 +122,5 @@ cd yay
 makepkg -si
 
 ## config
-all config files in the home directory are in my github dotfiles repository
-a list of all config files in etc that I edited is in the directory ./etc
+most of the config files in the home directory are in my github dotfiles repository
+a list of all other config files that I edited is in ./other_configs
