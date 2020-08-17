@@ -80,6 +80,10 @@ input "1267:30:Elan_Touchpad" {
     bindsym $mod+Shift+t exec thunar
     bindsym $mod+Shift+b exec chromium
 
+    # Screenshots
+    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
+    bindsym Print exec grim -g "$(slurp)" - | swappy -f -
+
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
