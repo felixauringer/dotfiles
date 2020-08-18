@@ -55,53 +55,18 @@ window#waybar.solo {
 }
 
 #mode,
-#battery,
-#backlight,
 #pulseaudio,
 #network,
 #temperature,
 #cpu,
 #memory,
 #disk,
+#backlight,
+#battery,
 #clock,
 #tray {
     padding: 0 5px;
     color: #ffffff;
-}
-
-#battery {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-#battery.charging {
-    color: #ffffff;
-    background-color: #26A65B;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-label:focus {
-    background-color: #000000;
-}
-
-#backlight {
-    background-color: #90b1b1;
 }
 
 #pulseaudio {
@@ -157,6 +122,41 @@ label:focus {
 
 #disk {
     background-color: #2b2e39;
+}
+
+#backlight {
+    background-color: #3c414e;
+}
+
+#battery {
+    background-color: #2b2e39;
+}
+
+#battery.charging {
+    background-color: #26A65B;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ad1d82;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #eb4d4b;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.warning:not(.charging) {
+    background-color: #a18d18;
+}
+
+#battery.full {
+    background-color: #26A65B;
 }
 
 #clock {

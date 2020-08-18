@@ -7,40 +7,20 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": [],
-    "modules-right": ["pulseaudio", "network", "temperature", "cpu", "memory", "disk", "backlight", "clock", "tray"],
+    "modules-right": ["pulseaudio", "network", "temperature", "cpu", "memory", "disk", "backlight", "battery", "clock", "tray"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
         "format": "{name}",
         "persistent_workspaces": {
-            "1": [],
-            "2": []
+            "1": ["eDP-1"]
         }
     },
     "sway/mode": {
         "format": "<span><b>{}</b></span>"
     },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", ""]
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
     "pulseaudio": {
-        "scroll-step": 5, // %, can be a float
+        "scroll-step": 1, // %, can be a float
         "format": "{icon} {volume}% {format_source}",
         "format-bluetooth": " {icon} {volume}% {format_source}",
         "format-bluetooth-muted": "  {format_source}",
@@ -51,7 +31,7 @@
             "default": ["", "", ""]
         },
         // scrolling changes volume
-        "on-click": "pactl set-sink-mute $(pactl list short sinks | grep -i running | cut -f1) toggle",
+        "on-click": "pactl set-sink-mute $(pactl list short sinks | grep -i output | cut -f1) toggle",
         "on-click-right": "pactl set-source-mute $(pactl list sources short | grep -i input | cut -f1) toggle",
         "on-click-middle": "pavucontrol"
     },
@@ -70,15 +50,14 @@
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
+        "critical-threshold": 70,
         "format": "{icon} {temperatureC}°C",
         "format-icons": ["", ""],
         "interval": 10,
         "tooltip": false
     },
     "cpu": {
-        "format": " {usage:2}%",
+        "format": " {usage}%",
         "interval": 5,
         "states": {
             "warning": 50,
@@ -87,7 +66,7 @@
         "tooltip": true
     },
     "memory": {
-        "format": " {percentage}%",
+        "format": " {percentage}%",
         // "tooltip-format": "{used} of {avail}", // not available :(
         "interval": 5,
         "states": {
@@ -99,7 +78,37 @@
     "disk": {
         "format": " {percentage_used}%",
         "tooltip-format": "{path}: {used} of {total}",
-        "interval": 30
+        "interval": 60
+    },
+    "backlight": {
+        "device": "intel-backlight",
+        "format": "{icon} {percent:2}%",
+        "states": {
+            "low": 0,
+            "medium": 40,
+            "bright": 80
+        },
+        "format-icons": ["", "", ""],
+        "on-scroll-up": "light -A 1",
+        "on-scroll-down": "light -U 1",
+        "interval": 60
+    },
+    "battery": {
+        "states": {
+            "critical": 0,
+            "warning": 15,
+            "low": 30,
+            "good": 50,
+            "full": 90
+        },
+        "format-time": "{H}:{M}h",
+        "format": "{icon} {capacity}% {time}",
+        "format-charging": " {capacity}% {time}",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "interval": 60,
+        "tooltip": true
     },
     "clock": {
         "timezone": "Europe/Berlin",
