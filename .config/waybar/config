@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": [],
-    "modules-right": ["pulseaudio", "network", "temperature", "cpu", "memory", "disk", "clock", "tray"],
+    "modules-right": ["network", "pulseaudio", "temperature", "cpu", "memory", "disk", "clock", "tray"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
@@ -18,6 +18,18 @@
     },
     "sway/mode": {
         "format": "<span><b>{}</b></span>"
+    },
+    "network": {
+        "format-wifi": " {ifname}: {essid} ({signalStrength}%)  {bandwidthUpOctets}  {bandwidthDownOctets}",
+        "format-ethernet": " {ifname}  {bandwidthUpOctets}  {bandwidthDownOctets}",
+        "format-linked": " {ifname}: Link  {bandwidthUpOctets}  {bandwidthDownOctets}",
+        "format-disconnected": " Disconnected",
+        "format": "{ifname}",
+        "tooltip-format-wifi": "{ipaddr}/{cidr}",
+        "tooltip-format-ethernet": "{ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "", // shows format-disconnected?
+        "tooltip-format": "",
+        "interval": 3
     },
     "pulseaudio": {
         "scroll-step": 1, // %, can be a float
@@ -34,18 +46,6 @@
         "on-click": "pactl set-sink-mute $(pactl list short sinks | grep -i output | cut -f1) toggle",
         "on-click-right": "pactl set-source-mute $(pactl list sources short | grep -i input | cut -f1) toggle",
         "on-click-middle": "pavucontrol"
-    },
-    "network": {
-        "format-wifi": " {ifname}: {essid} ({signalStrength}%)  {bandwidthUpOctets}  {bandwidthDownOctets}",
-        "format-ethernet": " {ifname}  {bandwidthUpOctets}  {bandwidthDownOctets}",
-        "format-linked": " {ifname}: Link  {bandwidthUpOctets}  {bandwidthDownOctets}",
-        "format-disconnected": " Disconnected",
-        "format": "{ifname}",
-        "tooltip-format-wifi": "{ipaddr}/{cidr}",
-        "tooltip-format-ethernet": "{ipaddr}/{cidr}",
-        "tooltip-format-disconnected": "", // shows format-disconnected?
-        "tooltip-format": "",
-        "interval": 3
     },
     "temperature": {
         // "thermal-zone": 2,

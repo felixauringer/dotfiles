@@ -56,8 +56,8 @@ window#waybar.solo {
 }
 
 #mode,
-#pulseaudio,
 #network,
+#pulseaudio,
 #temperature,
 #cpu,
 #memory,
@@ -68,6 +68,15 @@ window#waybar.solo {
     color: #ffffff;
 }
 
+#network {
+    background-color: #3c414e;
+}
+
+#network.disabled,
+#network.disconnected {
+    background-color: #ff0000;
+}
+
 #pulseaudio {
     background-color: #f1c40f;
     color: #000000;
@@ -76,15 +85,6 @@ window#waybar.solo {
 #pulseaudio.muted {
     background-color: #90b1b1;
     color: #2a5c45;
-}
-
-#network {
-    background-color: #2980b9;
-}
-
-#network.disabled,
-#network.disconnected {
-    background-color: #ff0000;
 }
 
 #temperature {
