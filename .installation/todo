@@ -1,4 +1,10 @@
 chmod 600 /boot/initramfs* after generating new initramfs
-waybar
+waybar:
+  temperature
+  more network states
+  media: spotify / vlc / ...
+  gpu
+  ipv6 tooltip
 keybindings
 spotifyd
+mime

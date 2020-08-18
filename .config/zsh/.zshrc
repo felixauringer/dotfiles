@@ -126,6 +126,9 @@ alias pacman-sync='cat \
   $HOME/.installation/pacman/applications \
   | sudo pacman -S --needed -'
 
+alias toggle-output='pactl set-sink-mute $(pactl list short sinks | grep -i running | cut -f1) toggle'
+alias toggle-input='pactl set-source-mute $(pactl list sources short | grep -i input | cut -f1) toggle'
+
 if [ $(tput lines) -gt 25 ]
 then
   neofetch
