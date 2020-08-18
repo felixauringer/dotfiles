@@ -7,13 +7,13 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": [],
-    "modules-right": ["pulseaudio", "network", "temperature", "cpu", "memory", "disk", "backlight", "battery", "clock", "tray"],
+    "modules-right": ["pulseaudio", "network", "temperature", "cpu", "memory", "disk", "clock", "tray"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
         "format": "{name}",
         "persistent_workspaces": {
-            "1": ["eDP-1"]
+            "1": []
         }
     },
     "sway/mode": {
@@ -79,36 +79,6 @@
         "format": " {percentage_used}%",
         "tooltip-format": "{path}: {used} of {total}",
         "interval": 60
-    },
-    "backlight": {
-        "device": "intel-backlight",
-        "format": "{icon} {percent:2}%",
-        "states": {
-            "low": 0,
-            "medium": 40,
-            "bright": 80
-        },
-        "format-icons": ["", "", ""],
-        "on-scroll-up": "light -A 1",
-        "on-scroll-down": "light -U 1",
-        "interval": 60
-    },
-    "battery": {
-        "states": {
-            "critical": 0,
-            "warning": 15,
-            "low": 30,
-            "good": 50,
-            "full": 90
-        },
-        "format-time": "{H}:{M}h",
-        "format": "{icon} {capacity}% {time}",
-        "format-charging": " {capacity}% {time}",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{capacity}%",
-        "format-icons": ["", "", "", "", ""],
-        "interval": 60,
-        "tooltip": true
     },
     "clock": {
         "timezone": "Europe/Berlin",
