@@ -58,7 +58,7 @@
     },
     "cpu": {
         "format": " {usage}%",
-        "interval": 5,
+        "interval": 1,
         "states": {
             "warning": 50,
             "critical": 80
@@ -68,7 +68,7 @@
     "memory": {
         "format": " {percentage}%",
         // "tooltip-format": "{used} of {avail}", // not available :(
-        "interval": 5,
+        "interval": 1,
         "states": {
             "warning": 50,
             "critical": 80
