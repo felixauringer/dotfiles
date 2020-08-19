@@ -24,3 +24,4 @@ texlive-core
 texlive-science
 davfs2
 wireguard-tools
+qemu
