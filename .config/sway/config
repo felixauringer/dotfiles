@@ -30,7 +30,7 @@ output * bg $HOME/.config/backgrounds/arch-blue-noise.jpg fill
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 # Example configuration: output HDMI-A-1 resolution 1920x1080 position 1920,0
-# <displays>
+output eDP-1 res 1920x1080 pos 0 0
 
 # start applications
 exec nm-applet --indicator
@@ -66,6 +66,11 @@ exec swayidle -w \
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
+
+input "1267:30:Elan_Touchpad" {
+  tap enabled
+  natural_scroll enabled
+}
 
 input "type:keyboard" {
     xkb_layout us,de
