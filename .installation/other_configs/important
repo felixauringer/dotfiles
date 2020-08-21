@@ -2,6 +2,8 @@
 /etc/grub.d/40_custom
 /etc/fstab
 /etc/mkinitcpio.conf
-/etc/xorg.conf.d
+/etc/X11/xorg.conf.d
 /etc/wireguard
 $HOME/.ssh/config
+/etc/udev/rules.d
+/etc/security/limits.d
