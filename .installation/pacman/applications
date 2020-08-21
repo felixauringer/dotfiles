@@ -26,3 +26,4 @@ davfs2
 wireguard-tools
 usbutils
 pciutils
+python-pip
