@@ -61,7 +61,7 @@ output * bg $HOME/.config/backgrounds/arch-blue-noise.jpg fill
 
 input "type:keyboard" {
     xkb_layout us,de
-    xkb_options grp:lwin_toggle,terminate:ctrl_alt_bksp,caps:escape_shifted_capslock
+    xkb_options grp:win_space_toggle,terminate:ctrl_alt_bksp,caps:escape_shifted_capslock
 }
 
 ### Key bindings
