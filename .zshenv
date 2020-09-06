@@ -11,3 +11,6 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Dark-solid'
 gsettings set org.gnome.desktop.interface icon-theme 'Arc'
 gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+
+# add ~/.local/bin to path for pip
+export PATH="$PATH:$HOME/.local/bin"
