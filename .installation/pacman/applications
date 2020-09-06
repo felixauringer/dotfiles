@@ -37,3 +37,5 @@ element-desktop
 networkmanager
 nm-connection-editor
 network-manager-applet
+xournalpp
+wpa_supplicant
