@@ -27,3 +27,5 @@ wireguard-tools
 usbutils
 pciutils
 python-pip
+zip
+unzip
