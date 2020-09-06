@@ -27,5 +27,7 @@ wireguard-tools
 usbutils
 pciutils
 python-pip
+sxiv
+tumbler
 zip
 unzip
