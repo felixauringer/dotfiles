@@ -17,7 +17,6 @@ pulseaudio-alsa
 ranger
 okular
 libreoffice-fresh
-okular
 thunderbird
 gimp
 texlive-core
@@ -31,4 +30,3 @@ sxiv
 tumbler
 zip
 unzip
-qemu
