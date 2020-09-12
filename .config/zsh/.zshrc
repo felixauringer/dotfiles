@@ -119,6 +119,7 @@ alias ls='ls -h --color=auto'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
+alias open='xdg-open'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias pacman-sync='cat \
   $HOME/.installation/pacman/base \
