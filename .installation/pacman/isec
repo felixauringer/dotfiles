@@ -4,3 +4,8 @@ hashcat
 cuda
 opencl-nvidia
 p7zip
+john
+nftables
+dnsutils
+openbsd-netcat
+sshfs
