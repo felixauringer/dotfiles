@@ -1,0 +1,21 @@
+# personal directories
+aur/
+Desktop/
+Downloads/
+nas/
+uni/
+vms/
+workspace/
+
+# directories that should be there
+.cache/
+.local/
+.ssh/
+
+# directories and files that shouldn't be there
+.yarn/
+.yarnrc
+.wget-hsts
+.python_history
+.nvm/
+.npmrc
