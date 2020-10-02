@@ -32,3 +32,6 @@ zip
 unzip
 vlc
 element-desktop
+networkmanager
+nm-connection-editor
+network-manager-applet

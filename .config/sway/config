@@ -32,6 +32,9 @@ output * bg $HOME/.config/backgrounds/arch-blue-noise.jpg fill
 # Example configuration: output HDMI-A-1 resolution 1920x1080 position 1920,0
 # <displays>
 
+# start applications
+exec nm-applet --indicator
+
 ### Idle configuration
 #
 # Example configuration:
