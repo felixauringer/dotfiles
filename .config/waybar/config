@@ -44,8 +44,8 @@
             "default": ["", "", ""]
         },
         // scrolling changes volume
-        "on-click": "pactl set-sink-mute $(pactl list short sinks | grep -i output | cut -f1) toggle",
-        "on-click-right": "pactl set-source-mute $(pactl list sources short | grep -i input | cut -f1) toggle",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
         "on-click-middle": "pavucontrol"
     },
     "temperature": {

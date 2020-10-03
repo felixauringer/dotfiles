@@ -87,11 +87,17 @@ input "type:keyboard" {
 
     # Program shortcuts
     bindsym $mod+Shift+t exec thunar
-    bindsym $mod+Shift+b exec chromium
+    bindsym $mod+Shift+b exec firefox
 
     # Screenshots
     bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
     bindsym Print exec grim -g "$(slurp)" - | swappy -f -
+
+    # Special keys
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
