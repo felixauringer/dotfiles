@@ -31,6 +31,8 @@ tumbler
 zip
 unzip
 vlc
+libnotify
+dunst
 element-desktop
 networkmanager
 nm-connection-editor
