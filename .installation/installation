@@ -124,3 +124,6 @@ makepkg -si
 ## config
 most of the config files in the home directory are in my github dotfiles repository
 a list of all other config files that I edited is in ./other_configs
+// get ssh keys to new machine
+git clone --bare git@github.com:felixauringer/dotfiles.git $HOME/.dotfiles
+git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout
