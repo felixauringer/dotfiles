@@ -1,7 +1,0 @@
-ignore-empty-password
-daemonize
-no-unlock-indicator
-image=$HOME/.config/backgrounds/arch-blue-noise.jpg
-hide-keyboard-layout
-disable-caps-lock-text
-scaling=fill

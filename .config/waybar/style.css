@@ -57,13 +57,9 @@ window#waybar.solo {
 
 #mode,
 #network,
-#pulseaudio,
-#temperature,
 #cpu,
 #memory,
 #disk,
-#backlight,
-#battery,
 #clock,
 #tray {
     padding: 0 5px;
@@ -77,24 +73,6 @@ window#waybar.solo {
 #network.disabled,
 #network.disconnected {
     background-color: #ff0000;
-}
-
-#pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
-}
-
-#pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
-}
-
-#temperature {
-    background-color: #498b12;
-}
-
-#temperature.critical {
-    background-color: #eb4d4b;
 }
 
 #cpu {
@@ -123,41 +101,6 @@ window#waybar.solo {
 
 #disk {
     background-color: #2b2e39;
-}
-
-#backlight {
-    background-color: #3c414e;
-}
-
-#battery {
-    background-color: #2b2e39;
-}
-
-#battery.charging {
-    background-color: #498b12;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ad1d82;
-    }
-}
-
-#battery.critical:not(.charging) {
-    background-color: #eb4d4b;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#battery.warning:not(.charging) {
-    background-color: #a18d18;
-}
-
-#battery.full {
-    background-color: #498b12;
 }
 
 #clock {
