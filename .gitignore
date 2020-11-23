@@ -1,16 +1,15 @@
 # personal directories
-aur/
-Desktop/
+.cloned/
 Downloads/
-nas/
 uni/
-vms/
 workspace/
 
 # directories that should be there
 .cache/
 .local/
 .ssh/
+.icons/
+.dotfiles/
 
 # directories and files that shouldn't be there
 .yarn/
@@ -19,3 +18,4 @@ workspace/
 .python_history
 .nvm/
 .npmrc
+.Xauthority
